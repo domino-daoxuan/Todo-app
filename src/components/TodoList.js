@@ -6,14 +6,13 @@ const TodoList = ({ todos, removeTodo, toggleComplete }) => {
           <div key={todo.id} style={{ display: "flex" }}>
             <li
               style={{
-                  // toan tu 3 ngoi
-                textDecoration: todo.completed ? "line-through" : null
+                textDecoration: todo.completed ? "line-through" : null // toan tu 3 ngoi
               }}
-              onClick={() => toggleComplete(todo.id)}
             >
+            <input type="checkbox"  onClick={() => toggleComplete(todo.id)}/>
               {todo.task}
             </li>
-            <button onClick={() => removeTodo(todo.id)}>X</button>
+            <button type="button" onClick={() => removeTodo(todo.id)}>X</button>
           </div>
         ))}
       </ul>

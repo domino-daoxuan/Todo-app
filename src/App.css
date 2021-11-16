@@ -4,6 +4,7 @@
 
 li{
   text-align: initial;
+  list-style-type: none;
 }
 
 .App-logo {
