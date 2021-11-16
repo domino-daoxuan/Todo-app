@@ -9,7 +9,8 @@ const TodoList = ({ todos, removeTodo, toggleComplete }) => {
                 textDecoration: todo.completed ? "line-through" : null // toan tu 3 ngoi
               }}
             >
-            <input type="checkbox"  onClick={() => toggleComplete(todo.id)}/>
+            <input type="checkbox" checked={todo.completed}
+              onClick={() => toggleComplete(todo.id)} />
               {todo.task}
             </li>
             <button type="button" onClick={() => removeTodo(todo.id)}>X</button>
