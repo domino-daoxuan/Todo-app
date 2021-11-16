@@ -1,10 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
+const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 function App() {
   const [todos, setTodos] = useState([]);
+
+  // chay lan dau ngay khi khoi dong de lay du lieu tu trang web
+  useEffect(() => {
+    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
+    if (storageTodos){
+      setTodos(storageTodos);
+    }
+  }, []);
+
+  // luu du lieu vao local
+  useEffect(() => {
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
+  }, [todos]);
   
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -15,7 +29,7 @@ function App() {
       if(todo.id === id){
         return {
           ...todo,
-          completed: !todo.completed
+          completed: !todo.completed // thay doi gia tri cua complete
         };
       }
       return todo;

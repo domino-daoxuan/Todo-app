@@ -13,7 +13,7 @@ const TodoForm = ({ addTodo }) => {
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();// prevents browser refresh
+        e.preventDefault();// ngan lam moi trinh duyet
         if (todo.task.trim()){
             addTodo({ ...todo, id: Math.random()});
             setTodo({...todo, task: "" });
