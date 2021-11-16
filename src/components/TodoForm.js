@@ -6,15 +6,18 @@ const TodoForm = ({ addTodo }) => {
         complete: false
     });
 
-    function handleTaskInputChange(e){
+    const handleTaskInputChange = (e) => {
         // e.target.value contains new input from onChange
         // event for input elements
         setTodo({ ...todo, task: e.target.value});
     }
 
-    function handleSubmit(e){
+    const handleSubmit = (e) => {
         e.preventDefault();// prevents browser refresh
-        addTodo({ ...todo, id: Math.random()});
+        if (todo.task.trim()){
+            addTodo({ ...todo, id: Math.random()});
+            setTodo({...todo, task: "" });
+        }
     }
 
     return (

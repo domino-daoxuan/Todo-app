@@ -1,15 +1,21 @@
-const TodoList = ({ todos }) => {
-    console.log(todos);
+const TodoList = ({ todos, removeTodo, toggleComplete }) => {
+    // console.log(todos);
     return (
         <ul>
-            {todos.map(todo => {
-                return(
-                    <li key={todo.id}>
-                        {todo.task}
-                    </li>
-                );
-            })}
-        </ul>
+        {todos.map(todo => (
+          <div key={todo.id} style={{ display: "flex" }}>
+            <li
+              style={{
+                textDecoration: todo.completed ? "line-through" : null
+              }}
+              onClick={() => toggleComplete(todo.id)}
+            >
+              {todo.task}
+            </li>
+            <button onClick={() => removeTodo(todo.id)}>X</button>
+          </div>
+        ))}
+      </ul>
     );
 }
  
