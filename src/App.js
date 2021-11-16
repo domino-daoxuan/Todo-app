@@ -7,7 +7,7 @@ const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 function App() {
   const [todos, setTodos] = useState([]);
 
-  // chay lan dau ngay khi khoi dong de lay du lieu tu trang web
+  // chay de lay du lieu tu local
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos){

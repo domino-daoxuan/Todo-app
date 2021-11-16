@@ -3,7 +3,7 @@ const TodoForm = ({ addTodo }) => {
     const [todo, setTodo] = useState({
         id: "",
         task: "",
-        complete: false
+        completed: false
     });
 
     const handleTaskInputChange = (e) => {
@@ -14,7 +14,7 @@ const TodoForm = ({ addTodo }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();// ngan lam moi trinh duyet
-        if (todo.task.trim()){
+        if (todo.task.trim()){ // trim() loai bo khoang trang chuoi
             addTodo({ ...todo, id: Math.random()});
             setTodo({...todo, task: "" });
         }
