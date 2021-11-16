@@ -6,6 +6,7 @@ const TodoList = ({ todos, removeTodo, toggleComplete }) => {
           <div key={todo.id} style={{ display: "flex" }}>
             <li
               style={{
+                  // toan tu 3 ngoi
                 textDecoration: todo.completed ? "line-through" : null
               }}
               onClick={() => toggleComplete(todo.id)}

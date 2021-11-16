@@ -15,7 +15,7 @@ function App() {
       if(todo.id === id){
         return {
           ...todo,
-          complete: !todo.complete
+          completed: !todo.completed
         };
       }
       return todo;

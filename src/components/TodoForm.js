@@ -7,8 +7,8 @@ const TodoForm = ({ addTodo }) => {
     });
 
     const handleTaskInputChange = (e) => {
-        // e.target.value contains new input from onChange
-        // event for input elements
+        // e.target.value chua dau vao moi tu onChange
+        // event cho cac thanh phan input
         setTodo({ ...todo, task: e.target.value});
     }
 
