@@ -15,7 +15,7 @@ const TodoForm = ({ addTodo }) => {
     const handleSubmit = (e) => {
         e.preventDefault();// ngan lam moi trinh duyet
         if (todo.task.trim()){ // trim() loai bo khoang trang chuoi
-            addTodo({ ...todo, id: Math.random()});
+            addTodo({ ...todo, id: new Date().getTime().toString()});
             setTodo({...todo, task: "" });
         }
     }
@@ -26,7 +26,9 @@ const TodoForm = ({ addTodo }) => {
             name="task" 
             value={ todo.task } 
             onChange={handleTaskInputChange}/>
-            <button type="submit">Submit</button>
+            <button className="todo-button" type="submit">
+                <i className="fas fa-plus-square"></i>
+            </button>
         </form>
     );
 }

@@ -1,22 +1,22 @@
-const TodoList = ({ todos, removeTodo, toggleComplete }) => {
+import Todo from "./Todo";
+
+const TodoList = ({ todos, removeTodo, completeTodo }) => {
     // console.log(todos);
     return (
-        <ul>
-        {todos.map(todo => (
-          <div key={todo.id} style={{ display: "flex" }}>
-            <li
-              style={{
-                textDecoration: todo.completed ? "line-through" : null // toan tu 3 ngoi
-              }}
-            >
-            <input type="checkbox" checked={todo.completed}
-              onClick={() => toggleComplete(todo.id)} />
-              {todo.task}
-            </li>
-            <button type="button" onClick={() => removeTodo(todo.id)}>X</button>
-          </div>
-        ))}
-      </ul>
+      <div className="todo-container">
+        <ul className="todo-list">
+          {todos.map(todo => {
+            return(
+              <Todo
+                {...todo}
+                key={todo.id}
+                removeTodo={removeTodo}
+                completeTodo={completeTodo}
+              />
+            );
+          })}
+        </ul>
+      </div>
     );
 }
  

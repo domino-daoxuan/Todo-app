@@ -24,7 +24,7 @@ function App() {
     setTodos([...todos, todo]);
   }
 
-  const toggleComplete = (id) => {
+  const completeTodo = (id) => {
     setTodos(todos.map(todo => {
       if(todo.id === id){
         return {
@@ -44,12 +44,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h3>Todo App</h3>
+        <h1>Todo App</h1>
         <TodoForm addTodo={addTodo}/>
         <TodoList 
           todos={todos} 
           removeTodo={removeTodo}
-          toggleComplete={toggleComplete}
+          completeTodo={completeTodo}
         />
       </header>
     </div>
