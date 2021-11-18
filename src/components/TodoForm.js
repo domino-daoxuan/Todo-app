@@ -1,5 +1,5 @@
 import { useState } from "react";
-const TodoForm = ({ addTodo }) => {
+const TodoForm = ({ addTodo, setStatus }) => {
     const [todo, setTodo] = useState({
         id: "",
         task: "",
@@ -20,6 +20,10 @@ const TodoForm = ({ addTodo }) => {
         }
     }
 
+    const handleStatus = (e) => {
+        setStatus(e.target.value);
+    }
+
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" 
@@ -27,8 +31,15 @@ const TodoForm = ({ addTodo }) => {
             value={ todo.task } 
             onChange={handleTaskInputChange}/>
             <button className="todo-button" type="submit">
-                <i className="fas fa-plus-square"></i>
+                <i className="fas fa-plus"></i>
             </button>
+            <div className="select">
+                <select onChange={handleStatus} name="todos" className="filter-todo">
+                    <option value="all">All</option>
+                    <option value="completed">Completed</option>
+                    <option value="uncompleted">Uncompleted</option>
+                </select>
+            </div>
         </form>
     );
 }

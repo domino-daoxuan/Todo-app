@@ -3,22 +3,37 @@ import './App.css';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
 
-const LOCAL_STORAGE_KEY = "react-todo-list-todos";
+const LOCAL_STORAGE_KEY = "list-todos";
+const ALL = "all";
+const COMPLETED = "completed";
+const UNCOMPLETED = "uncompleted";
 function App() {
   const [todos, setTodos] = useState([]);
+  const [status, setStatus] = useState(ALL);
+  const [filteredTodos, setFilteredTodos] = useState([]);
 
   // chay de lay du lieu tu local
   useEffect(() => {
+    getLocalTodos();
+  }, []);
+
+  useEffect(() => {
+    handleFilterTodos();
+    saveLocalTodos();
+  },[todos, status]);
+
+  //==========================================
+
+  const getLocalTodos = () => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos){
       setTodos(storageTodos);
     }
-  }, []);
+  }
 
-  // luu du lieu vao local
-  useEffect(() => {
+  const saveLocalTodos = () => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-  }, [todos]);
+  }
   
   const addTodo = (todo) => {
     setTodos([...todos, todo]);
@@ -41,15 +56,34 @@ function App() {
     setTodos(newTodos);
   }
 
+  const handleFilterTodos = () => {
+    switch (status) {
+      case COMPLETED:
+        setFilteredTodos(todos.filter(todo => todo.completed === true));
+        break;
+      case UNCOMPLETED:
+        setFilteredTodos(todos.filter(todo => todo.completed === false));
+        break;
+      default:
+        setFilteredTodos(todos);
+        break;
+    }
+  }
+
+  //============================================
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Todo App</h1>
-        <TodoForm addTodo={addTodo}/>
+        <TodoForm 
+          addTodo={addTodo}
+          setStatus={setStatus}
+          />
         <TodoList 
-          todos={todos} 
           removeTodo={removeTodo}
           completeTodo={completeTodo}
+          filteredTodos={filteredTodos}
         />
       </header>
     </div>

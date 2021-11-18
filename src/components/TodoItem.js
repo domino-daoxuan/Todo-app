@@ -1,4 +1,4 @@
-const Todo = ({ id,task, completed, removeTodo, completeTodo }) => {
+const TodoItem = ({ id,task, completed, removeTodo, completeTodo }) => {
     return (
         <div className="todo">
             <li className={`todo-item ${completed ? "completed" : ""}`}>
@@ -14,4 +14,4 @@ const Todo = ({ id,task, completed, removeTodo, completeTodo }) => {
     );
 }
  
-export default Todo;
+export default TodoItem;

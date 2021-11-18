@@ -1,13 +1,13 @@
-import Todo from "./Todo";
+import TodoItem from "./TodoItem";
 
-const TodoList = ({ todos, removeTodo, completeTodo }) => {
+const TodoList = ({ removeTodo, completeTodo, filteredTodos }) => {
     // console.log(todos);
     return (
       <div className="todo-container">
         <ul className="todo-list">
-          {todos.map(todo => {
+          {filteredTodos.map(todo => {
             return(
-              <Todo
+              <TodoItem
                 {...todo}
                 key={todo.id}
                 removeTodo={removeTodo}
