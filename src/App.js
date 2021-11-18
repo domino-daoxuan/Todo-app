@@ -20,7 +20,7 @@ function App() {
   useEffect(() => {
     handleFilterTodos();
     saveLocalTodos();
-  },[todos, status]);
+  },[todos, status]);// eslint-disable-line react-hooks/exhaustive-deps
 
   //==========================================
 
