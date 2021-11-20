@@ -26,13 +26,6 @@ const TodoForm = ({ addTodo, setStatus }) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" 
-            name="task" 
-            value={ todo.task } 
-            onChange={handleTaskInputChange}/>
-            <button className="todo-button" type="submit">
-                <i className="fas fa-plus"></i>
-            </button>
             <div className="select">
                 <select onChange={handleStatus} name="todos" className="filter-todo">
                     <option value="all">All</option>
@@ -40,6 +33,13 @@ const TodoForm = ({ addTodo, setStatus }) => {
                     <option value="uncompleted">Uncompleted</option>
                 </select>
             </div>
+            <input type="text" 
+            name="task" 
+            value={ todo.task } 
+            onChange={handleTaskInputChange}/>
+            <button className="todo-button" type="submit">
+                <i className="fas fa-plus"></i>
+            </button>
         </form>
     );
 }

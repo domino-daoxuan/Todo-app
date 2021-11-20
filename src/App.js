@@ -70,6 +70,10 @@ function App() {
     }
   }
 
+  const editTodo = (id) => {
+    
+  }
+
   //============================================
 
   return (
@@ -84,6 +88,7 @@ function App() {
           removeTodo={removeTodo}
           completeTodo={completeTodo}
           filteredTodos={filteredTodos}
+          editTodo={editTodo}
         />
       </header>
     </div>

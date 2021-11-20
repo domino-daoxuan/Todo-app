@@ -1,6 +1,6 @@
 import TodoItem from "./TodoItem";
 
-const TodoList = ({ removeTodo, completeTodo, filteredTodos }) => {
+const TodoList = ({ removeTodo, completeTodo, filteredTodos, editTodo }) => {
     // console.log(todos);
     return (
       <div className="todo-container">
@@ -12,6 +12,7 @@ const TodoList = ({ removeTodo, completeTodo, filteredTodos }) => {
                 key={todo.id}
                 removeTodo={removeTodo}
                 completeTodo={completeTodo}
+                editTodo={editTodo}
               />
             );
           })}
